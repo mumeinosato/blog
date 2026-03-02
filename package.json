@@ -1,0 +1,20 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/mumeinosato/blog#readme",
+  "bugs": {
+    "url": "https://github.com/mumeinosato/blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mumeinosato/blog.git"
+  },
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "build": "hugo"
+  },
+  "dependencies": {
+    "wrangler": "^4.69.0"
+  }
+}
