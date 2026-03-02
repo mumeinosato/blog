@@ -1,3 +1,22 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Project'
+languageCode = 'ja-jp'
+title = 'mumeinosato Lab'
+theme = 'stack'
+
+[[params.widgets.homepage]]
+    type = "search"
+
+[[params.widgets.homepage]]
+    type = "archives"
+    [params.widgets.homepage.params]
+        limit = 5
+
+[[params.widgets.homepage]]
+    type = "categories"
+    [params.widgets.homepage.params]
+        limit = 10
+
+[[params.widgets.homepage]]
+    type = "tag-cloud"
+    [params.widgets.homepage.params]
+        limit = 10
