@@ -1,7 +1,19 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://mumeinosato.com/'
 languageCode = 'ja-jp'
+defaultContentLanguage = "ja"
 title = 'mumeinosato Lab'
 theme = 'stack'
+enableRobotsTXT = true
+
+[params]
+    favicon = "/favicon.ico"
+
+[params.dateFormat]
+    published = "2006年1月2日"
+    lastUpdated = "2006年1月2日 15:04"
+
+[params.sidebar]
+    avatar   = "img/avatar.png"
 
 [[params.widgets.homepage]]
     type = "search"
@@ -20,3 +32,16 @@ theme = 'stack'
     type = "tag-cloud"
     [params.widgets.homepage.params]
         limit = 10
+
+[[params.widgets.page]]
+    type = "toc"
+
+[params.comments]
+    enabled = false
+
+[params.opengraph]
+    enabled = true
+
+[sitemap]
+    changefreq = "weekly"
+    priority = 0.5
