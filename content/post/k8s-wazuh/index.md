@@ -1,5 +1,6 @@
 ---
 title: KubernetesにWazuh構築してみた
+description: サーバーなどに潜む脅威を検出・分析してくれるWazuhというソフトを知った。Kustomizeも提供されているのでKubernetes上に構築しようと思う。 
 date: 2025-11-29
 tags: 
     - Kubernetes

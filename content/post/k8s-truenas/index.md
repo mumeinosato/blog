@@ -1,5 +1,6 @@
 ---
 title: TrueNASをKubernetesのストレージとして使う
+description: TrueNASの仕様変更によりdemocratic-csiのデフォルトでは利用できなくなっていたので修正方法を記述しておく。
 date: 2025-11-29
 tags: 
     - Kubernetes
