@@ -1,6 +1,6 @@
 # Configure Cloudflare Worker
 
-name = "hosting-cloudflare-worker"
+name = "blog"
 compatibility_date = "2026-03-02"
 
 [build]
