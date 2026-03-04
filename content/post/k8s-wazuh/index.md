@@ -1,6 +1,5 @@
 ---
 title: KubernetesにWazuh構築してみた
-description: サーバーなどに潜む脅威を検出・分析してくれるWazuhというソフトを知った。Kustomizeも提供されているのでKubernetes上に構築しようと思う。 
 date: 2025-11-29
 tags: 
     - Kubernetes
@@ -28,7 +27,8 @@ bash certs/indexer_cluster/generate_certs.sh
 
 続けてマニフェストを編集していきます。
 
-```yaml {title="kustomization.yml"}
+```yaml
+# kustomization.yml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -45,7 +45,8 @@ resources:
 
 既存のStorageClassを使うように置き換えます。
 
-```yaml {title="indexer-sts.yaml"}
+```yaml
+# indexer-sts.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 
@@ -66,7 +67,8 @@ metadata:
             storage: 500Mi
 ```
 
-```yaml {title="wazuh-master-sts.yaml"}
+```yaml
+# wazuh-master-sts.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -86,7 +88,8 @@ metadata:
             storage: 500Mi
 ```
 
-```yaml {title="wazuh-worker-sts.yaml"}
+```yaml
+# wazuh-worker-sts.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -108,7 +111,8 @@ metadata:
 
 [local-env](https://github.com/wazuh/wazuh-kubernetes/tree/main/envs/local-env) を見るとパッチがあるので直接変更しておきます。
 
-```yaml {title="indexer-sts.yaml"}
+```yaml
+# indexer-sts.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -130,7 +134,8 @@ spec:
 # ~~省略~~
 ```
 
-```yaml {title="wazuh-worker-sts.yaml"}
+```yaml
+# wazuh-worker-sts.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -157,7 +162,8 @@ bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh
 
 取得したhashで上書きします。
 
-```yaml {title="internal_users.yml"}
+```yaml
+# internal_users.yml
 # ~~省略~~
 admin:
   hash: "<取得したhash>"
@@ -173,7 +179,8 @@ kibanaserver:
 # ~~省略~~
 ```
 
-```yaml {title="indexer-cred-secret.yaml"}
+```yaml
+# indexer-cred-secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -183,7 +190,8 @@ data:
   password: U2VjcmV0UGFzc3dvcmQ=  # パスワードをbase64にしたもの
 ```
 
-```yaml {title="dashboard-cred-secret.yaml"}
+```yaml
+# dashboard-cred-secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
