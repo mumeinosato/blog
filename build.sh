@@ -11,7 +11,7 @@ main() {
 
   DART_SASS_VERSION=1.97.3
   GO_VERSION=1.26.0
-  HUGO_VERSION=0.155.3
+  HUGO_VERSION=0.157.3
   NODE_VERSION=24.13.1
 
   export TZ=Europe/Oslo
@@ -32,10 +32,10 @@ main() {
 
   # Install Hugo
   echo "Installing Hugo ${HUGO_VERSION}..."
-  curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+  curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
   mkdir "${HOME}/.local/hugo"
-  tar -C "${HOME}/.local/hugo" -xf "hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
-  rm "hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+  tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+  rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
   export PATH="${HOME}/.local/hugo:${PATH}"
 
   # Install Node.js
