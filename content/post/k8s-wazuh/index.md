@@ -226,7 +226,7 @@ https://<割り当てられたip>
 
 でアクセスできます。
 
-![Wazuhダッシュボード](https://mtayo.net/wp-content/uploads/2025/11/image-1024x547.png)
+<!--![Wazuhダッシュボード](https://mtayo.net/wp-content/uploads/2025/11/image-1024x547.png)-->
 
 Usernameはadmin、Passwordは先ほど設定したものです。
 
