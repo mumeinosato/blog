@@ -8,13 +8,14 @@ categories:
     - 自宅サーバー
 ---
 
+## 概要
 TrueNASの仕様変更によりdemocratic-csiのデフォルトでは利用できなくなっていたので修正方法を記述しておく。
 
-### TrueNASの設定
+## TrueNASの設定
 
 [こちら](https://zenn.dev/imksoo/articles/f52a824c5ea632)の記事を参考にdemocratic-csiのリポジトリの追加とTrueNASの設定を行ってください。
 
-### democratic-csiの設定
+## democratic-csiの設定
 
 ZFSコマンドのパスを指定することで動作させることができます。
 
@@ -80,6 +81,6 @@ driver:
 helm upgrade --install --values truenas-iscsi.yml --create-namespace --namespace democratic-csi trunas-iscsi democratic-csi/democratic-csi
 ```
 
-### 参考
+## 参考
 
 [Kubernetes に democratic-csi を入れて、TrueNAS に自動的にPVを作ってもらうようにした](https://zenn.dev/imksoo/articles/f52a824c5ea632)

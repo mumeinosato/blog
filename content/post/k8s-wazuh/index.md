@@ -8,12 +8,13 @@ categories:
     - 自宅サーバー
 ---
 
+## はじめに
 サーバーなどに潜む脅威を検出・分析してくれるWazuhというソフトを知った。  
 Kustomizeも提供されているのでKubernetes上に構築しようと思う。  
 [https://wazuh.com/](https://wazuh.com/)  
 [https://github.com/wazuh/wazuh-kubernetes](https://github.com/wazuh/wazuh-kubernetes)
 
-### Kustomizeでインストール
+## Kustomizeでインストール
 
 まず、[GitHub](https://github.com/wazuh/wazuh-kubernetes/tree/main/wazuh)からデプロイ用のファイルをダウンロードしてきます。  
 wazuhフォルダだけとりあえず使うためArgoCDに登録しているリポジトリ内に配置します。
@@ -148,7 +149,7 @@ spec:
 
 ここで一度デプロイします。
 
-### 設定の修正
+## 設定の修正
 
 ダッシュボード等にアクセスできるようにするために設定を修正します。
 
@@ -217,7 +218,7 @@ bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/securityadmin.sh
 
 最後にpodをすべて削除し反映させれば完了です。
 
-### ダッシュボードにアクセス
+## ダッシュボードにアクセス
 
 ```
 https://<割り当てられたip>
@@ -229,6 +230,6 @@ https://<割り当てられたip>
 
 Usernameはadmin、Passwordは先ほど設定したものです。
 
-### 参考
+## 参考
 
 [K8sにWazuhをインストールしてセキュアな環境を作る](https://qiita.com/yuito_it_/items/4852ef7f6d239244ee90)

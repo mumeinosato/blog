@@ -43,3 +43,13 @@ sitemap:
 permalinks:
   post: "/p/:slug/"
   page: "/:slug/"
+
+markup:  
+  goldmark:
+    renderer:
+      unsafe: true
+
+  tableOfContents:  
+    endLevel: 4
+    ordered: true
+    startLevel: 2
