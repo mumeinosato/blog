@@ -1,0 +1,64 @@
+// ...existing code...
+{{- /* Params:
+     Resources: Where to search for images
+     Image: Image URL
+
+     Returns:
+     Resource: Hugo image resource object
+     Permalink: Image URL
+     Height: Image height
+     Width: Image width */ -}}
+
+{{- $result := "" -}}
+
+{{- if .Image -}}
+  {{- $url := urls.Parse .Image -}}
+  {{- $permalink := .Image -}}
+  {{- $resource := "" -}}
+
+  {{- if not (in (slice "https" "http") $url.Scheme) -}}
+    {{- /* Local image */ -}}
+    {{- with .Resources.Get (printf "%s" (.Image | safeURL)) -}}
+      {{- $resource = . -}}
+      {{- $permalink = .RelPermalink -}}
+    {{- else -}}
+      {{- /* try matching by basename as fallback */ -}}
+      {{- $basename := path.Base (.Image | safeURL) -}}
+      {{- with .Resources.GetMatch (printf "**%s" $basename) -}}
+        {{- $resource = . -}}
+        {{- $permalink = .RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- /* Remote image */ -}}
+    {{- with try (resources.GetRemote $url) -}}
+      {{- with .Err -}}
+        {{- errorf "%s" . -}}
+      {{- else with .Value -}}
+        {{- $resource = . -}}
+      {{- else -}}
+        {{- errorf "Unable to get remote resource %q" $url -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if $resource -}}
+    {{- if reflect.IsImageResourceProcessable $resource -}}
+      {{- $result = dict
+          "Resource" $resource
+          "Permalink" $permalink
+          "Height" $resource.Height
+          "Width" $resource.Width
+        -}}
+    {{- else -}}
+      {{- $result = dict
+          "Resource" $resource
+          "Permalink" $permalink
+          "Height" nil
+          "Width" nil
+        -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $result -}}
