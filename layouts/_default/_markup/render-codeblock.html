@@ -1,0 +1,30 @@
+<div>
+  {{- $name := .Attributes.name -}} {{ with $name }}
+  <div class="code-block-filename">{{ . }}</div>
+  {{ end }}
+  <div class="code-block-content">
+    {{- highlight (.Inner | safeHTML) .Type .Options }}
+  </div>
+</div>
+
+<style>
+  .code-block-filename {
+    --code-filename-fontsize: calc(0.96em * 0.9);
+
+    display: table;
+    max-width: 100%;
+    background: var(--accent-color-darker);
+    color: var(--accent-color-text);
+    font-size: var(--code-filename-fontsize);
+    line-height: 1;
+    padding-top: calc(var(--code-filename-fontsize) * 0.5);
+    padding-left: calc(var(--code-filename-fontsize) * 0.7);
+    padding-right: calc(var(--code-filename-fontsize) * 0.7);
+    padding-bottom: calc(var(--code-filename-fontsize) * 0.7);
+    border-radius: calc(var(--code-filename-fontsize) * 0.5)
+      calc(var(--code-filename-fontsize) * 0.5) 0 0;
+  }
+  .code-block-content {
+    padding-top: 0px;
+  }
+</style>

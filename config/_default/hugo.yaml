@@ -1,6 +1,7 @@
 baseurl: https://mumeinosato.com/
-languageCode: ja-JP
+languageCode: ja
 defaultContentLanguage: ja
+hasCJKLanguage: true
 title: "mumeinosato Lab"
 theme: "stack"
 enableRobotsTXT: false

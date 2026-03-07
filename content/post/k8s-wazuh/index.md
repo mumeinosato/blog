@@ -28,8 +28,7 @@ bash certs/indexer_cluster/generate_certs.sh
 
 続けてマニフェストを編集していきます。
 
-```yaml
-# kustomization.yml
+```yaml {name=kustomization.yml}
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -46,8 +45,7 @@ resources:
 
 既存のStorageClassを使うように置き換えます。
 
-```yaml
-# indexer-sts.yaml
+```yaml {name=storage-class.yaml}
 apiVersion: apps/v1
 kind: StatefulSet
 
@@ -68,8 +66,9 @@ metadata:
             storage: 500Mi
 ```
 
-```yaml
-# wazuh-master-sts.yaml
+<p></p>
+
+```yaml {name=storage-class.yaml}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -89,8 +88,9 @@ metadata:
             storage: 500Mi
 ```
 
-```yaml
-# wazuh-worker-sts.yaml
+<p></p>
+
+```yaml {name=wazuh-worker-sts.yaml}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -112,8 +112,7 @@ metadata:
 
 [local-env](https://github.com/wazuh/wazuh-kubernetes/tree/main/envs/local-env) を見るとパッチがあるので直接変更しておきます。
 
-```yaml
-# indexer-sts.yaml
+```yaml {name=indexer-sts.yaml}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -135,8 +134,10 @@ spec:
 # ~~省略~~
 ```
 
-```yaml
-# wazuh-worker-sts.yaml
+<p></p>
+
+
+```yaml {name=wazuh-worker-sts.yaml}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -163,8 +164,7 @@ bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh
 
 取得したhashで上書きします。
 
-```yaml
-# internal_users.yml
+```yaml {name=internal_users.yml}
 # ~~省略~~
 admin:
   hash: "<取得したhash>"
@@ -180,8 +180,9 @@ kibanaserver:
 # ~~省略~~
 ```
 
-```yaml
-# indexer-cred-secret.yaml
+<p></p>
+
+```yaml {name=indexer-cred-secret.yaml}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -191,8 +192,9 @@ data:
   password: U2VjcmV0UGFzc3dvcmQ=  # パスワードをbase64にしたもの
 ```
 
-```yaml
-# dashboard-cred-secret.yaml
+<p></p>
+
+```yaml {name=dashboard-cred-secret.yaml}
 apiVersion: v1
 kind: Secret
 metadata:

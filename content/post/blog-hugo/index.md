@@ -44,7 +44,7 @@ git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-them
 
 デフォルトの`hugo.toml`を削除し`config/_default/hugo.yaml`を作成します。
 
-```yaml
+```yaml {name=hugo.yaml}
 baseurl: https://example.com/
 languageCode: ja-JP
 defaultContentLanguage: ja
@@ -116,9 +116,7 @@ hugo server -D
 ### Cloudflare Workersの設定
 以下の2つのファイルをプロジェクトのルートに作成します。
 
-```shell
-# build.sh
-
+```shell {name=build.sh}
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------------------
@@ -192,8 +190,7 @@ main "$@"
 
 <p></p>
 
-```toml
-# wrangler.toml
+```toml {name=wrangler.toml}
 # Configure Cloudflare Worker
 
 name = "blog"
@@ -209,8 +206,7 @@ not_found_handling = "404-page"
 
 <p></p>
 
-```json
-# package.json
+```json {name=package.json}
 {
   "name": "blog",
   "version": "1.0.0",
