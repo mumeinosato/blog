@@ -36,12 +36,26 @@ params:
   opengraph:
     enabled: true
 
+menu:
+  social:
+    - identifier: github
+      name: GitHub
+      url: https://github.com/mumeinosato
+      params:
+        icon: brand-github
+
+    - identifier: twitter
+      name: Twitter
+      url: https://twitter.com/mumeinosato
+      params:
+        icon: brand-twitter
+
 sitemap:
   changefreq: "weekly"
   priority: 0.5
 
 permalinks:
-  post: "/p/:slug/"
+  post: "/post/:slug/"
   page: "/:slug/"
 
 markup:  
@@ -53,3 +67,5 @@ markup:
     endLevel: 4
     ordered: true
     startLevel: 2
+
+googleAnalytics: G-058Y2W25JY
